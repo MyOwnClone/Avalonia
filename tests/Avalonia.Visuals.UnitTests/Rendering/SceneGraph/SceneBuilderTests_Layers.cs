@@ -75,7 +75,7 @@ namespace Avalonia.Visuals.UnitTests.Rendering.SceneGraph
                 var rootDirty = scene.Layers[tree].Dirty;
 
                 Assert.Equal(1, rootDirty.Count());
-                Assert.Equal(new Rect(21, 21, 58, 78), rootDirty.Single());
+                Assert.Equal(new Rect(21, 21, 58, 78).Inflate(0.5), rootDirty.Single());
             }
         }
 
@@ -141,7 +141,7 @@ namespace Avalonia.Visuals.UnitTests.Rendering.SceneGraph
                 var rootDirty = scene.Layers[tree].Dirty;
 
                 Assert.Equal(1, rootDirty.Count());
-                Assert.Equal(new Rect(21, 21, 58, 78), rootDirty.Single());
+                Assert.Equal(new Rect(21, 21, 58, 78).Inflate(0.5), rootDirty.Single());
             }
         }
 

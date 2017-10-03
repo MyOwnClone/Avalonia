@@ -415,7 +415,7 @@ namespace Avalonia.Visuals.UnitTests.Rendering.SceneGraph
                 Assert.Equal(1, borderNode.DrawOperations.Count);
 
                 Assert.Null(result.FindNode(decorator));
-                Assert.Equal(new Rect(0, 0, 100, 100), result.Layers.Single().Dirty.Single());
+                Assert.Equal(new Rect(0, 0, 100, 100).Inflate(0.5), result.Layers.Single().Dirty.Single());
             }
         }
 
@@ -459,7 +459,7 @@ namespace Avalonia.Visuals.UnitTests.Rendering.SceneGraph
 
                 Assert.Null(result.FindNode(border));
                 Assert.Null(result.FindNode(canvas));
-                Assert.Equal(new Rect(0, 0, 100, 100), result.Layers.Single().Dirty.Single());
+                Assert.Equal(new Rect(0, 0, 100, 100).Inflate(0.5), result.Layers.Single().Dirty.Single());
             }
         }
 
@@ -553,7 +553,7 @@ namespace Avalonia.Visuals.UnitTests.Rendering.SceneGraph
                 sceneBuilder.Update(scene, decorator);
 
                 var rects = scene.Layers.Single().Dirty.ToArray();
-                Assert.Equal(new[] { new Rect(0, 10, 100, 90) }, rects);
+                Assert.Equal(new[] { new Rect(0, 10, 100, 90).Inflate(0.5) }, rects);
             }
         }
 

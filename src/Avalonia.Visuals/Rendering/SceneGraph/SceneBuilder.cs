@@ -146,7 +146,10 @@ namespace Avalonia.Rendering.SceneGraph
             var bounds = new Rect(visual.Bounds.Size);
             var contextImpl = (DeferredDrawingContextImpl)context.PlatformImpl;
 
-            contextImpl.Layers.Find(node.LayerRoot)?.Dirty.Add(node.Bounds);
+            if (!node.Bounds.IsEmpty)
+            {
+                contextImpl.Layers.Find(node.LayerRoot)?.Dirty.Add(node.Bounds.Inflate(0.5));
+            }
 
             if (visual.IsVisible)
             {
@@ -273,7 +276,7 @@ namespace Avalonia.Rendering.SceneGraph
             scene.Remove(node);
             node.SubTreeUpdated = true;
 
-            scene.Layers[node.LayerRoot].Dirty.Add(node.Bounds);
+            scene.Layers[node.LayerRoot].Dirty.Add(node.Bounds.Inflate(0.5));
 
             if (node.Visual is Visual v)
             {
